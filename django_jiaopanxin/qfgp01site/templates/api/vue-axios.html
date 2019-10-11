@@ -1,0 +1,50 @@
+{% extends "base.HTML" %}
+
+{% block table %}
+{% verbatim %}    <!-- 为了防止django和vue混合  需要加上这个模版语句-->
+<div id="app">
+    <h1>{{ msg }}</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="warning dropdown-toggle">
+                <th>id</th>
+                <th>操作系统</th>
+                <th>系统架构</th>
+                <th>主机名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="  item in servers ">
+                <td>{{ item.id }}</td>
+                <td>{{ item.os_name }}</td>
+                <td>{{ item.machine }}</td>
+                <td>{{ item.host_name }}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endverbatim %}
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "服务器信息",
+            servers: ''
+        },
+        mounted() {
+            axios.get("{% url 'api:userJson1' %}", ).then(res => {
+                this.servers = res.data;    //注意   res.data才会读取到get请求成功返回的数据
+            })
+        }
+
+    })
+
+</script>
+{% endblock %}

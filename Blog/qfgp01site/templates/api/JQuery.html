@@ -1,0 +1,59 @@
+{% extends "base.HTML" %}
+
+{% block table %}
+<button id="btn" class="btn btn-success">查看服务器信息</button>
+<h2 id="h2"></h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="warning dropdown-toggle">
+            <th>id</th>
+            <th>操作系统</th>
+            <th>系统架构</th>
+            <th>主机名</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+</table>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(function () {
+
+        $("#btn").on('click', function () {
+            $('#h2').text("服务器信息")
+            $.ajax({
+                url: "{% url 'api:userJson1' %}",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    var tags = ''
+                    for (let item of data) {
+                        $("#tbody").append(`
+                        <tr >
+                            <th scope="row">${ item.id }</th>
+                            <td>${ item.os_name }</td>
+                            <td>${ item.machine }</td>    
+                            <td>${ item.host_name }</td>
+                        </tr>
+                        `)
+                        // tags = tags + `
+                        // <tr >
+                        //     <th scope="row">${ item.id }</th>
+                        //     <td>${ item.os_name }</td>
+                        //     <td>${ item.machine }</td>    
+                        //     <td>${ item.host_name }</td>
+                        // </tr>
+                        // `
+                    }
+                    // $("#tbody").html(tags)
+                }
+            })
+        })
+    })
+
+</script>
+{% endblock %}

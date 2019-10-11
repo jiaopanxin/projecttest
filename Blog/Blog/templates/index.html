@@ -1,0 +1,36 @@
+{% extends "base.HTML" %}
+{% block title %}
+首页
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <ul>
+            {% for item in ariticle %}
+            <li>
+                <div class="list_con">
+                    <div class="title">
+                        <h2>
+                            <a href="{% url 'article:article_content' item.id %}"><span
+                                    class="recommend">{{ item.title }}</span></a>
+                        </h2>
+                    </div>
+                    <div class="summary oneline">
+                        <h4 style="color:darkgoldenrod">{{ item.content }} </h4>
+                    </div>
+                    <dl class="list_userbar">
+                        <dt><a href=""></a> 作者 {{ item.author.username }}</dt>
+                        <div>点击量 {{ item.hits }}</div>
+                    </dl>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

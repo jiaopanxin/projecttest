@@ -1,0 +1,32 @@
+{% extends "base.HTML" %}
+
+{% block table %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <h1>{{ now }}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>id</th>
+                    <th>主机名</th>
+                    <th>操作系统</th>
+                    <th>系统架构</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for server in serverList %}
+                <tr class="active">
+                    <th scope="row">{{ forloop.counter}}</th>
+                    <td>{{server.id}}</td>
+                    <td>{{server.host_name}}</td>
+                    <td>{{server.os_name}}</td>
+                    <td>{{server.machine}}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

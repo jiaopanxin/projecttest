@@ -1,0 +1,47 @@
+{% extends "base.HTML" %}
+
+{% block title %} 服务器信息 {% endblock %}
+
+{% block table %}
+
+{{ name }}
+<div class="row" style="text-align: center" style="margin: 20px">
+    <div class="col-md-11" style="text-align:center ; padding-left: 40px">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="warning dropdown-toggle">
+                    <th>id</th>
+                    <th>操作系统</th>
+                    <th>系统架构</th>
+                    <th>主机名</th>
+                    <th>系统版本</th>
+                    <th>内核信息</th>
+                    <th>cpu名称</th>
+                    <th>cpu类型</th>
+                    <th>cpu物理颗数</th>
+                    <th>每颗cpu核心数</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ serverList }}
+                {% for server in serverList %}
+                <span>{{ serverList }}</span>
+                <tr class="{% cycle 'success' '' 'warning' '' 'danger' '' 'info'  %}">
+                    <td>{{server.id}}</td>
+                    <td>{{server.machine}}</td>
+                    <td>{{server.host_name}}</td>
+                    <td>{{server.os_version}}</td>
+                    <td>{{server.kernel}}</td>
+                    <td>{{server.model_name}}</td>
+                    <td>{{server.cpu_type}}</td>
+                    <td>{{server.physical_count}}</td>
+                    <td>{{server.cpu_cores}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

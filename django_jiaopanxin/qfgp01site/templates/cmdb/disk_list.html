@@ -1,0 +1,37 @@
+{% extends "base.HTML" %}
+
+{% block title %} 硬盘信息 {% endblock %}
+
+{% block table %}
+
+{{ name }}
+<div class="row" style="text-align: center" style="margin: 20px">
+    <div class="col-md-11" style="text-align:center ; padding-left: 40px" >
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="warning dropdown-toggle">
+                        <th>id</th>
+                        <th>插槽号</th>
+                        <th>硬盘类型</th>
+                        <th>硬盘大小</th>
+                        <th>服务器</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for items in disk_list %}
+                    <tr class="{% cycle 'success' '' 'warning' '' 'danger' '' 'info'  %}">
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{items.slot}}</td>
+                        <td>{{items.type}}</td>
+                        <td>{{items.size}}</td>
+                        <td>{{items.server_id}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+    </div>
+</div>
+
+
+{% endblock %}

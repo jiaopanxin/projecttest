@@ -1,0 +1,89 @@
+{% extends "base.HTML" %}
+
+{% block table %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <h1>服务器详情</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>主机名</th>
+                    <th>操作系统</th>
+                    <th>系统架构</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="active">
+                    <td>{{server.id}}</td>
+                    <td>{{server.host_name}}</td>
+                    <td>{{server.os_name}}</td>
+                    <td>{{server.machine}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <h1>内存详情</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>内存容量</th>
+                    <th>插槽</th>
+                    <th>内存类型</th>
+                    <th>速率</th>
+                    <th>服务器</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for  mem in server.memory.all  %}
+                <!-- 通过qureyset对象进行多表查询-->
+                <tr class="active">
+                    <td>{{mem.id}}</td>
+                    <td>{{mem.capacity}}</td>
+                    <td>{{mem.slot}}</td>
+                    <td>{{mem.model}}</td>
+                    <td>{{mem.speed}}</td>
+                    <td>{{mem.server_id}}</td>
+                </tr>
+                {% endfor  %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <h1>硬盘详情</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>插槽号</th>
+                    <th>硬盘类型</th>
+                    <th>硬盘大小</th>
+                    <th>服务器</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for  disk in server.disk.all  %}
+                <!-- 通过qureyset对象进行多表查询-->
+                <tr class="active">
+                    <td>{{disk.id}}</td>
+                    <td>{{disk.slot}}</td>
+                    <td>{{disk.type}}</td>
+                    <td>{{disk.size}}</td>
+                    <td>{{disk.server_id}}</td>
+                </tr>
+                {% endfor  %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

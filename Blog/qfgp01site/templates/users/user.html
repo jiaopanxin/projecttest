@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        {{name}}
+        {% if name == "alice" %}
+        <h1>这是管理员</h1>
+        {% elif name == "admin" %}
+        <h2>普通用户</h2>
+        {% else %}
+        <h3>未知用户</h3>
+        {% endif %}
+    </div>
+
+    
+</body>
+
+</html>

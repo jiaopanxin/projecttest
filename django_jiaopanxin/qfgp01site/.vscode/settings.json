@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 30,
+            "database": "dj21gp01",
+            "dialect": "MySQL",
+            "name": "django2.1-gp-01",
+            "password": "QFedu123!",
+            "port": 3306,
+            "server": "10.0.122.188",
+            "username": "alice"
+        }
+    ],
+    "python.linting.pylintArgs": ["--generate-members"],
+    
+}

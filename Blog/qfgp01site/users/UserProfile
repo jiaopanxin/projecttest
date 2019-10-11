@@ -1,0 +1,14 @@
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+class UsersProfile(AbstractUser):
+    username = models.CharField('用户名', max_length=128)
+    password = models.CharField('密码', max_length=128)
+    email = models.EmailField(
+        verbose_name='email address',
+        max_length=255,
+        unique=True,
+    )
+    mobile = models.CharField('手机', max_length=11)
+

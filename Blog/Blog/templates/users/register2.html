@@ -1,0 +1,26 @@
+<form action="{% url 'users:usersLogin' %}">
+    <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">用户名</label> {{ form.username }}
+    </div>
+    <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" >密码</label>{{ form.password }}
+    </div>
+    
+    <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" >手机号</label> {{ form.mobile }}
+    </div>
+    <div class="form-group">
+            <label for="{{ form.password.id_for_label }}" >年龄</label> {{ form.age }}
+    </div>
+    
+    
+
+
+
+
+
+
+    <label for="{{ forms.username.id_for_label }}"></label>
+    <input type="submit" value="提交">
+
+</form>

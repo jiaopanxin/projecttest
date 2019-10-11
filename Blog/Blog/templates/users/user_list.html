@@ -1,0 +1,32 @@
+{% extends "base.HTML" %}
+
+{% block title %}用户列表{% endblock %}
+
+
+{% block table %}
+<div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in userList %}
+                    <tr class="active">
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.age}}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

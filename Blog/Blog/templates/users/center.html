@@ -1,0 +1,26 @@
+{% extends "base.HTML" %}
+
+{% block title %}
+个人用户中心
+{% endblock %}
+{% block content %}
+<div>
+    <ul>
+        <li style="margin:50px 100px 0 100px">
+            <div class="list_con">
+                <div>
+                    <span>用户姓名</span>{{ user_info.username }}
+                </div>
+                <div>
+                    <span>用户头像</span><img src="{{ MEDIA_URL }}{{ request.user.avatar }}" alt="头像" height="100px"
+                        width="100px">
+                </div>
+                <div>
+                    <span><a href="{% url 'users:users_article' user_info.username  %}">用户文章总数</a></span>{{ count }}
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock %}

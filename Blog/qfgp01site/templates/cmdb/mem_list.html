@@ -1,0 +1,43 @@
+{% extends "base.HTML" %}
+
+{% block title %} 内存信息 {% endblock %}
+
+{% block table %}
+
+{{ name }}
+<div class="row" style="text-align: center" style="margin: 20px">
+    <div class="col-md-11" style="text-align:center ; padding-left: 40px" >
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="warning dropdown-toggle">
+                        <th>id</th>
+                        <th>内存容量</th>
+                        <th>插槽</th>
+                        <th>内存类型</th>
+                        <th>速率</th>
+                        <th>内存厂商</th>
+                        <th>产品序列号</th>
+                        <th>服务器</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for items in mem_list %}
+                    <tr class="{% cycle 'success' '' 'warning' '' 'danger' '' 'info'  %}">
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{items.capacity}}</td>
+                        <td>{{items.slot}}</td>
+                        <td>{{items.model}}</td>
+                        <td>{{items.speed}}</td>
+                        <td>{{items.manufacturer}}</td>
+                        <td>{{items.sn}}</td>
+                        <td>{{items.server_id}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+    </div>
+</div>
+
+
+{% endblock %}

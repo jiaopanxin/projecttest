@@ -1,0 +1,25 @@
+{% extends "base.HTML" %}
+{% block content %}
+
+{% if not artice %}
+<div>
+    <h2>该用户没有发布任何文章</h2>
+</div>
+{% else %}
+{% for item in artice %}
+
+<li style="margin:50px 100px 0 100px">
+    <div class="list_con">
+        <div>
+            <a href="{% url 'article:article_content' item.id %}">{{ item.content }}</a> <a
+                href="{% url 'article:article_del' item.id%}" style="color: orangered">删除文章</a>
+        </div>
+    </div>
+</li>
+
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock %}

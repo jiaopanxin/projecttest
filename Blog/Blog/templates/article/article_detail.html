@@ -1,0 +1,24 @@
+{% extends "base.HTML" %}
+
+{% block title %}
+{{ article_detail.title }}
+{% endblock %}
+
+{% block content %}
+<ul>
+    <li style="margin:50px 100px 0 100px">
+        <div class="list_con">
+            <div>
+                <a href="#">{{ article_detail.title }}</a>
+            </div>
+            <div>
+                <a href="#">{{ article_detail.content }}</a>
+            </div>
+            <dl class="list_userbar">
+                <dt>作者 {{ article_detail.author.username }}</dt>
+                <div>点击量 {{ article_detail.hits }}</div>
+            </dl>
+        </div>
+    </li>
+</ul>
+{% endblock %}
